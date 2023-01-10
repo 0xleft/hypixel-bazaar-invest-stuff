@@ -26,7 +26,7 @@ class ItemListing {
     }
 
     getBuyAmount = (money) => {
-        return Math.round(money/this.sellPrice);
+        return parseInt(money/this.sellPrice);
     }
 
     getExpectedSellTime = (money) => {
@@ -66,7 +66,7 @@ class ItemListing {
         }
 
         if (tempMoney > 0) {
-            moneyString += Math.round(tempMoney);
+            moneyString += Math.fround(tempMoney).toPrecision(4);
         }
 
         return moneyString;

@@ -32,17 +32,18 @@ function getData() {
 let itemList = new ItemList();
 getData();
 
-setInterval(()=> {
+// add the entries to select
+Object.entries(ItemList.sortOptions).forEach(([key, value]) => {
 
-    document.getElementById("lastUpdate").innerHTML = "Last update: ";
-    itemList.clear();
-    getData();
-
-}, 60000);
+    let option = document.createElement("option");
+    option.text = value;
+    option.value = value;
+    
+    document.getElementById("sortOptions").appendChild(option);
+});
 
 document.getElementById("sortOptions").addEventListener("change", ()=> {
 
-    itemList.clear();
-    getData();
+    itemList.sort(document.getElementById("sortOptions").selectedIndex);
 
 });

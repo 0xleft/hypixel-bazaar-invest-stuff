@@ -2,8 +2,8 @@ class ItemList {
     // a sort of enum javascript like no typescript here :(
     static sortOptions = {
         Price: 'Price',
-        TimedProfit: 'TimedProfit',
-        TimeTaken: 'TimeTaken',
+        TimedProfit: 'Timed Profit',
+        TimeTaken: 'Time Taken',
         Profit: 'Profit'
     };
 
@@ -33,11 +33,44 @@ class ItemList {
         });
     }
 
-    
 
-    sort = () => {
+    sort = (selectedIndex) => {
 
-        
+        let itemListCopy = this.itemList.copyWithin(-1, 0);
 
+        let listOut = [];
+
+        this.clear();
+
+        let choice = sortOptions[selectedIndex].text;
+
+        itemListCopy.forEach((listing)=> {
+            
+            let max = 0;
+            let selected;
+
+            itemListCopy.forEach((listingb)=> {
+
+                if (choice == "Price") {
+
+                }
+
+                if (choice == "Profit") {
+
+                    if (listingb.getProfit(parseFloat(document.getElementById("currentMoney").value)) > max) {
+                        max = listingb.getProfit(parseFloat(document.getElementById("currentMoney").value));
+                        console.log(max);
+                        selected = listingb;
+                    }
+                ;}
+
+            });
+
+            listOut.push(selected);
+
+        });
+
+
+        this.display();
     }
 }
