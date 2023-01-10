@@ -6,20 +6,27 @@
 
 body {
     background-color: black;
-    color: white;
+    color: rgb(204, 204, 204);
 }
 
 .static {
     position: fixed;
+    font-size: small;
+}
+
+.highlight {
+    font-weight: bold;
+    color: white;
 }
 
 #mainContainer {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat();
 }
 
 #infoContainer {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
 }
@@ -33,25 +40,10 @@ body {
     font-size: x-large;
 }
 
-
-#checkButton {
-    font-size: x-large;
-    border-radius: 0;
-    height: 30px;
-    transition: all 0.25s;
-    background-color: rgb(185, 185, 255);
-    border-width: 0;
-}
-
-#checkButton:hover {
-    background-color: white;
-}
-
-
 .itemListing {
     display: flex;
     flex-direction: column;
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(73, 73, 73);
     padding: 2px;
     border: 2px;
     margin: 20px;
@@ -61,5 +53,5 @@ body {
 }
 
 .itemListing:hover {
-    font-size: xx-large;
+    background-color: rgb(61, 61, 61);
 }
