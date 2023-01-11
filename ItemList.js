@@ -57,8 +57,8 @@ class ItemList {
 
                 if (choice == "Profit") {
 
-                    if (listingb.getProfit(parseFloat(document.getElementById("currentMoney").value)) > max) {
-                        max = listingb.getProfit(parseFloat(document.getElementById("currentMoney").value));
+                    if (parseFloat(listingb.getProfit(parseFloat(document.getElementById("currentMoney").value))) > max) {
+                        max = parseFloat(listingb.getProfit(parseFloat(document.getElementById("currentMoney").value)));
                         console.log(max);
                         selected = listingb;
                     }
@@ -66,6 +66,12 @@ class ItemList {
 
             });
 
+            // TODO implement this
+            itemListCopy.find(([item, index]) => {
+                if (item == selected) {
+                    itemListCopy.pop(index);
+                }
+            });
             listOut.push(selected);
 
         });

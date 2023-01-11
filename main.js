@@ -47,3 +47,10 @@ document.getElementById("sortOptions").addEventListener("change", ()=> {
     itemList.sort(document.getElementById("sortOptions").selectedIndex);
 
 });
+
+document.getElementById("checkButton").addEventListener("click", ()=> {
+
+    itemList.clear();
+    getData();
+
+});
