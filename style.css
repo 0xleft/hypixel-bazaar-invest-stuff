@@ -16,7 +16,12 @@ body {
 
 .highlight {
     font-weight: bold;
-    color: white;
+    color: rgb(122, 200, 255);
+}
+
+.selected {
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
 }
 
 #mainContainer {
@@ -43,6 +48,7 @@ body {
 .itemListing {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     background-color: rgb(73, 73, 73);
     padding: 2px;
     border: 2px;

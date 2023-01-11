@@ -5,9 +5,10 @@ function getData() {
 
     }).then(bazaarData=>{
 
+        itemList.clear();
+
         const {success, lastUpdated, products} = bazaarData;
 
-        document.getElementById("lastUpdate").innerHTML = "Last update: "+bazaarData.lastUpdated;
 
         // get all the new entries
         const entries = Object.entries(products);
@@ -22,8 +23,12 @@ function getData() {
             let buyMovingWeek = parseFloat(value.quick_status.buyMovingWeek);
             let sellMovingWeek = parseFloat(value.quick_status.sellMovingWeek);
             
-            itemList.addListing(new ItemListing(key, buyPrice, sellPrice, buyVolume, sellVolume, buyMovingWeek, sellMovingWeek));
-        })
+            if (!(sellPrice == undefined || buyPrice == undefined || buyVolume == undefined || sellVolume == undefined || buyMovingWeek == undefined || sellMovingWeek == undefined)) {
+                itemList.addListing(new ItemListing(key, buyPrice, sellPrice, buyVolume, sellVolume, buyMovingWeek, sellMovingWeek));
+            }
+        });
+
+        document.getElementById("lastUpdate").innerHTML = "Items: "+entries.length;
 
         itemList.display();
     })
@@ -43,14 +48,13 @@ Object.entries(ItemList.sortOptions).forEach(([key, value]) => {
 });
 
 document.getElementById("sortOptions").addEventListener("change", ()=> {
-
-    itemList.sort(document.getElementById("sortOptions").selectedIndex);
-
+    if (itemList.loading == false) {
+        itemList.sort(document.getElementById("sortOptions").selectedIndex);
+    }
 });
 
 document.getElementById("checkButton").addEventListener("click", ()=> {
-
-    itemList.clear();
-    getData();
-
+    if (itemList.loading == false) {
+        getData();
+    }
 });

@@ -22,7 +22,7 @@ class ItemListing {
     }
 
     getProfit = (money) => {
-        return (this.buyPrice - this.sellPrice) * this.getBuyAmount(money);
+        return parseInt((this.buyPrice - this.sellPrice) * this.getBuyAmount(money));
     }
 
     getBuyAmount = (money) => {
@@ -66,7 +66,7 @@ class ItemListing {
         }
 
         if (tempMoney > 0) {
-            moneyString += Math.fround(tempMoney).toPrecision(4);
+            moneyString += Math.round(tempMoney);
         }
 
         return moneyString;
@@ -75,7 +75,7 @@ class ItemListing {
     createListingDiv = (money) => {
 
         // if we cannot buy this item or the price of the item is 0 that means no supply or demand
-        if (this.getBuyAmount(money) < 1 || this.getBuyAmount(money).toString() == "Infinity" || money == 0) {
+        if (this.getBuyAmount(money) < 1 || this.getBuyAmount(money).toString() == "Infinity" || money == 0 || this.getBuyAmount(money).toString().toLocaleLowerCase() == "nan") {
             return null;
         }
 
